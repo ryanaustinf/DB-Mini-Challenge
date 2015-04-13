@@ -3,10 +3,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.mc.dto.ToDo;
-import com.mc.database.DBConnection;
 
 
 public class ToDoDAO {
@@ -29,12 +27,13 @@ public class ToDoDAO {
 	}	
 	
 	
-	public static void Accomplish(int id) throws SQLException
+	public static void accomplish(int id) throws SQLException
 		{
-		String query = "UPDATE todo.status WHERE todo.toDoId =?";
+		String query = "UPDATE todo SET status = ? WHERE todo.toDoId = ?";
 		try {
 				PreparedStatement ps = DBConnection.getConnection().prepareStatement(query);
-				ps.setString(1, "Complete");
+				ps.setString(1, ToDo.COMPLETE);
+				ps.setInt(2, id);
 			    ps.execute();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -42,7 +41,7 @@ public class ToDoDAO {
 			}
 		}
 	
-	public static Iterator get()
+	public static ArrayList<ToDo> get()
 			throws IllegalArgumentException {
 		String query = "SELECT todo.toDoId, todo.content, todo.status";
 		
@@ -62,7 +61,7 @@ public class ToDoDAO {
 			se.printStackTrace();
 		}
 		
-		return toDos.iterator();
+		return toDos;
 	}
 	
 }

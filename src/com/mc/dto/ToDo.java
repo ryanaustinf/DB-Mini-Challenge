@@ -8,6 +8,9 @@ public class ToDo {
 	public static final String CONTENT_COLUMN = "content";
 	public static final String STATUS_COLUMN = "status";
 			
+	public static final String PENDING = "PENDING";
+	public static final String COMPLETE = "COMPLETE";
+	
 	private int toDoId;
 	private String content;
 	private String status;

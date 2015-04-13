@@ -7,14 +7,32 @@ public class TaskIterator {
 	private ArrayList<ToDo> tasks;
 	private int curr;
 	
-	public TaskIterator( ArrayList<ToDo> tasks ) {
+	private static TaskIterator instance = null;
+	
+	private TaskIterator( ArrayList<ToDo> tasks ) {
 		this.tasks = new ArrayList<ToDo>();
 		for( ToDo toDo: tasks ) {
-			if( toDo.getStatus().equalsIgnoreCase(ToDo.PENDING) {
+			if( toDo.getStatus().equalsIgnoreCase(ToDo.PENDING) ) {
 				this.tasks.add(toDo);
 			}
 		}
 		curr = 0;
+	}
+	
+	public static TaskIterator getInstance() {
+		if( instance == null ) {
+			instance = new TaskIterator( new ArrayList<ToDo>() );
+		}
+		
+		return instance;
+	}
+	
+	public static TaskIterator getInstance( ArrayList<ToDo> tasks ) {
+		if( instance == null ) {
+			instance = new TaskIterator( tasks );
+		}
+		
+		return instance;
 	}
 	
 	public ToDo get() {
