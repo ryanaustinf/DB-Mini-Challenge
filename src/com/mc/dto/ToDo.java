@@ -2,6 +2,12 @@ package com.mc.dto;
 
 public class ToDo {
 
+	
+	
+	public static final String TODOID_COLUMN = "toDoId";
+	public static final String CONTENT_COLUMN = "content";
+	public static final String STATUS_COLUMN = "status";
+			
 	private int toDoId;
 	private String content;
 	private String status;

@@ -2,16 +2,21 @@ package com.mc.servlets;
 
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.themmt.model.database.WorkDAO;
+
+import services.PizzaManager;
+
 /**
  * Servlet implementation class Controller
  */
-@WebServlet("/Controller")
+@WebServlet(urlPatterns = {"/previous" ,"/next","/start"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,6 +33,25 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
+		
+		switch(request.getServletPath())
+		{
+		case "/previous":
+			
+			break;
+			
+		case "/next":
+			
+			break;
+			
+		case "/start":
+			ArrayList<ToDo> toDosToDoDAO.get();
+			break;
+			
+		}
+		
 	}
 
 	/**
