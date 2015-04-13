@@ -73,7 +73,7 @@
 					$("#hiddenform").submit();
 				});
 				$("#add").click(function(){
-					window.location = "addnote.jsp";
+					location = "addnote.jsp";
 				});
 				$("#content").dblclick(function(){
 					$("#hiddenform").attr("action","done").attr("method","POST");

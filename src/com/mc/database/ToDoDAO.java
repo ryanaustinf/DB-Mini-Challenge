@@ -13,12 +13,13 @@ public class ToDoDAO {
 	
 	public static void add(ToDo toDo ) throws SQLException {
 
-		String stmt = "INSERT INTO todo VALUES (?,?,?)";
+		String stmt = "INSERT INTO todo(" + ToDo.CONTENT_COLUMN + "," + 
+						ToDo.STATUS_COLUMN + ") VALUES (?,?)";
 		try {
 			PreparedStatement ps = DBConnection.getConnection().prepareStatement(stmt);
-			ps.setInt(1, toDo.getToDoId() );
-			ps.setString(2, toDo.getContent() );
-			ps.setString(3, toDo.getStatus() );
+			ps.setString(1, toDo.getContent() );
+			ps.setString(2, toDo.getStatus() );
+			System.out.println( ps );
 			ps.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -43,7 +44,7 @@ public class ToDoDAO {
 	
 	public static ArrayList<ToDo> get()
 			throws IllegalArgumentException {
-		String query = "SELECT todo.toDoId, todo.content, todo.status";
+		String query = "SELECT * FROM todo";
 		
 		
 		ArrayList<ToDo> toDos = new ArrayList<ToDo>();
@@ -56,6 +57,7 @@ public class ToDoDAO {
 				ToDo t = new ToDo(rs.getInt(ToDo.TODOID_COLUMN),rs.getString(ToDo.CONTENT_COLUMN),
 						rs.getString(ToDo.STATUS_COLUMN));
 				toDos.add(t);
+				System.out.println( t );
 			}
 		} catch(SQLException se) {
 			se.printStackTrace();

@@ -43,5 +43,11 @@ public class ToDo {
 		this.content = content;
 		this.status = status;
 	}
+	
+	public ToDo(String content, String status) {
+		super();
+		this.content = content;
+		this.status = status;
+	}
 
 }

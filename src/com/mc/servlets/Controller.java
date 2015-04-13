@@ -12,11 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mc.database.ToDoDAO;
 import com.mc.dto.TaskIterator;
+import com.mc.dto.ToDo;
 
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/previous" ,"/next","/start","/done"})
+@WebServlet(urlPatterns = {"/previous" ,"/next","/start","/done","/add"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,25 +33,32 @@ public class Controller extends HttpServlet {
     	TaskIterator taskIter;
 		
     	try {
-			ToDoDAO.accomplish(Integer.parseInt(request.getParameter("id")));
 			switch(request.getServletPath())
 			{
 				case "/previous":
 					taskIter = TaskIterator.getInstance();
 					taskIter.previous();
 					request.getSession().setAttribute("todo", taskIter.get() );
+					request.getRequestDispatcher("ShowToDo.jsp").forward(request, response);
 					break;
 				case "/next":
 					taskIter = TaskIterator.getInstance();
 					taskIter.next();
 					request.getSession().setAttribute("todo", taskIter.get() );
+					request.getRequestDispatcher("ShowToDo.jsp").forward(request, response);
 					break;
 				case "/start":
 					taskIter = TaskIterator.getInstance( ToDoDAO.get() );
 					request.getSession().setAttribute("todo", taskIter.get() );
+					request.getRequestDispatcher("ShowToDo.jsp").forward(request, response);
+					break;
+				case "/add":
+					ToDoDAO.add(new ToDo( request.getParameter("note"),ToDo.PENDING));
+					request.getRequestDispatcher("start").forward(request, response);
 					break;
 				case "/done":
-				
+					ToDoDAO.accomplish(Integer.parseInt(request.getParameter("id")));
+					request.getRequestDispatcher("start").forward(request, response); 
 					break;
 				default:
 			}
