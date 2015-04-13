@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="com.mc.dto.ToDo" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -58,7 +59,8 @@
 	</style>
 	<script src="jquery-2.1.1.js"></script>
 	<script>
-		var id = 4;
+		<% ToDo toDo = (ToDo)request.getSession().getAttribute("todo");%>
+		var id = <%=toDo.getToDoId()%>;
 		$(document).ready(function(){
 			if(id != -1){
 				$("#hiddeninput").val(id);
@@ -89,7 +91,7 @@
 	<div class="nav" id="up"></div>
 	
 	<div id="content">
-		<p><%=request.getSession().getAttribute("todo")%></p>
+		<p><%=todo.getContent()%></p>
 	</div>
 	
 	<div class="nav" id="down"></div>
