@@ -91,7 +91,7 @@
 	<div class="nav" id="up"></div>
 	
 	<div id="content">
-		<p><%=todo.getContent()%></p>
+		<p><%=toDo.getContent()%></p>
 	</div>
 	
 	<div class="nav" id="down"></div>
