@@ -1,6 +1,5 @@
 package com.mc.database;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -16,10 +15,10 @@ public class DBConnection {
 	
 	private DBConnection() {
 		driverName = "com.mysql.jdbc.Driver";
-		database = "todo";
-		address = "jdbc:mysql://127.0.0.1:3307/";
+		database = "pizzeria";
+		address = "jdbc:mysql://127.0.0.1:3306/";
 		username = "root";
-		password = "password";
+		password = "";
 		
 		try {
 			Class.forName(driverName);

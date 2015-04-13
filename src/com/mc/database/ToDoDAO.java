@@ -29,20 +29,8 @@ public class ToDoDAO {
 	}	
 	
 	
-	public static void Accomplish(int id) throws SQLException
-		{
-		String query = "UPDATE todo.status WHERE todo.toDoId =?";
-		try {
-				PreparedStatement ps = DBConnection.getConnection().prepareStatement(query);
-				ps.setString(1, "Complete");
-			    ps.execute();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				throw e;
-			}
-		
-		
-		}
+	
+	
 	
 	public static Iterator get()
 			throws IllegalArgumentException {
