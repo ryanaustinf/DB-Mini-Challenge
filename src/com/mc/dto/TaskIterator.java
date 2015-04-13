@@ -8,7 +8,12 @@ public class TaskIterator {
 	private int curr;
 	
 	public TaskIterator( ArrayList<ToDo> tasks ) {
-		this.tasks = tasks;
+		this.tasks = new ArrayList<ToDo>();
+		for( ToDo toDo: tasks ) {
+			if( toDo.getStatus().equalsIgnoreCase(ToDo.PENDING) {
+				this.tasks.add(toDo);
+			}
+		}
 		curr = 0;
 	}
 	
